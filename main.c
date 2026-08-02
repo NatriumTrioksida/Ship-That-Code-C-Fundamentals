@@ -5,7 +5,9 @@ typedef struct {
 } Point;
 
 int sqrDistance(Point a, Point b) {
-  return (b.x * b.x - a.x * a.x) + (b.y * b.y - a.y * a.y);
+  int x = b.x - a.x;
+  int y = b.y - a.y;
+  return (x * x) + (y * y);
 }
 
 int main(void) {
