@@ -2,15 +2,13 @@
 
 int main(void) {
   int n;
-  scanf("%d", &n);
-  if (n % 15 == 0) {
-    printf("FizzBuzz\n");
-  } else if (n % 3 == 0) {
-    printf("Fizz\n");
-  } else if (n % 5 == 0) {
-    printf("Buzz\n");
-  } else {
-    printf("%d\n", n);
+  if (!scanf("%d", &n)) {
+    return 1;
+  };
+  long long total = 0;
+  for (int i = 1; i <= n; i++) {
+    total += i;
   }
+  printf("%lld\n", total);
   return 0;
 }
