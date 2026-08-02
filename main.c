@@ -1,9 +1,17 @@
 #include <stdio.h>
 
 int main(void) {
-	int a, b;
-	if (!scanf("%d", &a)) return 1;
-	if (!scanf("%d", &b)) return 1;
-	printf("%d\n", a * b);
+	int a[5];
+	for (int i = 0; i < 5; i++) {
+		if(!scanf("%d", &a[i])) return 1;
+	}
+
+	int largest = a[0];
+	for (int i = 0; i < 5; i++) {
+		if (a[i] > largest) {
+			largest = a[i];
+		}
+	}
+	printf("%d\n", largest);
     return 0;
 }
