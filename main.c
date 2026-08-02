@@ -1,17 +1,15 @@
 #include <stdio.h>
+#include <string.h>
 
 int main(void) {
-	int a[5];
-	for (int i = 0; i < 5; i++) {
-		if(!scanf("%d", &a[i])) return 1;
-	}
-
-	int largest = a[0];
-	for (int i = 0; i < 5; i++) {
-		if (a[i] > largest) {
-			largest = a[i];
+	char str[100];
+	if (!scanf("%99s", str)) return 1;
+	for (int i = 0; i < 100; i ++) {
+		if (str[i] == '\n') {
+			str[i] = '\0';
+			break;
 		}
 	}
-	printf("%d\n", largest);
+	printf("%zu\n", strlen(str));
     return 0;
 }
