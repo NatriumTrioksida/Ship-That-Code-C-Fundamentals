@@ -1,15 +1,18 @@
 #include <stdio.h>
-#include <string.h>
 
 int main(void) {
-	char str[100];
-	if (fgets(str, sizeof str, stdin) == NULL) return 1;
-	for (int i = 0; i < 100; i ++) {
-		if (str[i] == '\n') {
-			str[i] = '\0';
-			break;
-		}
-	}
-	printf("%zu\n", strlen(str));
-    return 0;
+  int n;
+  if (scanf("%d", &n) == 0) {
+    return 1;
+  }
+  if (n % 15 == 0) {
+    printf("FizzBuzz\n");
+  } else if (n % 3) {
+    printf("Buzz\n");
+  } else if (n % 5) {
+    printf("Fizz\n");
+  } else {
+    printf("%d\n", n);
+  }
+  return 0;
 }
