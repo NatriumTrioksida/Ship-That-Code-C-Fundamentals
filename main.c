@@ -2,7 +2,7 @@
 
 int main(void) {
   int n;
-  if (!scanf("%d", &n)) return 1;
+  scanf("%d", &n);
   if (n % 15 == 0) {
     printf("FizzBuzz\n");
   } else if (n % 3 == 0) {
