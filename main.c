@@ -1,36 +1,34 @@
-#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main(void) {
-  size_t size;
-  if (!scanf("%ld", &size)) {
+  int n;
+  if (!scanf("%d\n", &n)) {
     return 1;
-  }
+  };
 
-  int *arr = malloc(size * sizeof(int));
-  if (!arr) {
+  FILE *out = fopen("/tmp/clines.txt", "w");
+  if (out == NULL)
     return 1;
-  }
-
-  size_t read_fail = 0;
-  for (int i = 0; i < size; i++) {
-    if (!scanf("%d", &arr[i])) {
-      read_fail = 1;
-      break;
+  char buf[1024];
+  for (int i = 0; i < n; i++) {
+    if (fgets(buf, sizeof(buf), stdin) != NULL) {
+      fputs(buf, out);
+      // Ensure a trailing newline if missing
+      size_t len = strlen(buf);
+      if (len > 0 && buf[len - 1] != '\n')
+        fputc('\n', out);
     }
   }
-  if (read_fail) {
-    free(arr);
-    return 1;
-  }
+  fclose(out);
 
-  long long sum = 0;
-  for (int i = 0; i < size; i++) {
-    sum += arr[i];
-  }
-  printf("%lld\n", sum);
-
-  free(arr);
+  // Re-open and count lines.
+  FILE *in = fopen("/tmp/clines.txt", "r");
+  int count = 0;
+  while (fgets(buf, sizeof(buf), in) != NULL)
+    count++;
+  fclose(in);
+  printf("lines: %d\n", count);
   return 0;
 }
