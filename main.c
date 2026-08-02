@@ -3,7 +3,7 @@
 
 int main(void) {
 	char str[100];
-	if (!scanf("%99s", str)) return 1;
+	if (fgets(str, sizeof str, stdin) == NULL) return 1;
 	for (int i = 0; i < 100; i ++) {
 		if (str[i] == '\n') {
 			str[i] = '\0';
