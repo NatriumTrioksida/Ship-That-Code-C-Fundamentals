@@ -2,7 +2,7 @@
 
 int main(void) {
   int n;
-  if (scanf("%d", &n) == 0) {
+  if (!scanf("%d", &n)) {
     return 1;
   }
   if (n % 15 == 0) {
